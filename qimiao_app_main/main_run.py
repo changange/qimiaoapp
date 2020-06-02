@@ -29,6 +29,7 @@ class MainTest:
                     excutor.submit(start.TestStart().save_app_log, phone_number[i], 'qimiao_log')
             else:
                 print('adb无法连接到手机~~~')
+                print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
 if __name__ == '__main__':
     mainT = MainTest()
