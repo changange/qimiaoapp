@@ -17,7 +17,7 @@ class MainTest:
         start.TestStart().jumpFrame(cmd_name)
         ##  随机进入fangjian
         while True:
-            home_test.HomeTest().test_rooms_main(cmd_name)
+            home_test.HomeTest().test_rooms_main(cmd_name, '嘿嘿嘿')            ##  进入指定的房间再这里写房间名称
 
     def qimiao_threading_excution(self):
         phone_number = start.TestStart().connectMoblie()
@@ -29,9 +29,6 @@ class MainTest:
                     excutor.submit(start.TestStart().save_app_log, phone_number[i], 'qimiao_log')
             else:
                 print('adb无法连接到手机~~~')
-
-
-
 
 if __name__ == '__main__':
     mainT = MainTest()

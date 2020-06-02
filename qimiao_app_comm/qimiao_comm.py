@@ -6,7 +6,6 @@ class QimiaoCommnotAction:
     ##  离开房间
     def leave_room(self, cmd_name):
         end.TestEnd(cmd_name).back_up_level()
-        # time.sleep(1)
         d = start.TestStart().connCMD(cmd_name)
         s = start.TestStart().sessionConn(cmd_name)
         display = d.device_info['display']
@@ -15,14 +14,17 @@ class QimiaoCommnotAction:
         s.click(width*0.686, hight*0.61)
 
     ##  进入房间先判断房间在不在，不在的话刷新
-    def into_room_exic(self):
+    def into_room_exic(self, cmd_name):
         try:
-            text = start.TestStart().sessionConn(resourceId='com.qmnl.qmpd:id/okBtn').get_text()
+            text = start.TestStart().sessionConn(cmd_name)(resourceId='com.qmnl.qmpd:id/okBtn').get_text()
+            print(text)
             if "知" in text:
-                start.TestStart().sessionConn(resourceId='com.qmnl.qmpd:id/okBtn').click()
+                start.TestStart().sessionConn(cmd_name)(resourceId='com.qmnl.qmpd:id/okBtn').click()
                 print('存在 知道了 弹框---房间已被解散')
+                return False
         except Exception as e:
             print('不存在 知道了 弹框')
+            return True
 
     ##  滑动的起始位置和终止位置（百分比）
     def side(self, start_width, start_hight, end_width, end_hight, cmd_name):
@@ -39,4 +41,4 @@ class QimiaoCommnotAction:
 if __name__ == '__main__':
     q = QimiaoCommnotAction()
     # q.side(0.498, 0.283, 0.485, 0.714)
-    q.into_room_exic()
+    q.into_room_exic('UKPFSCEQ99999999')
