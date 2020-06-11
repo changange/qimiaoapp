@@ -15,6 +15,15 @@ class HomeTest:
         width = display['width']
         height = display['height']
 
+        if s(resourceId='com.qmnl.qmpd:id/home_fragment_btn_create_room').wait(5):
+            print('首页--派对页面打开成功')
+        elif s(text='派对').wait(5):
+            s(text='派对').click()
+            print('首页----派对页面打开成功')
+        else:
+            print('首页--派对打开失败~~~~~~~~~~~~~~~~')
+            return False
+
         for i in range(10):
             ##  进入前先刷新下     传参（百分比）
             print('开始刷新首页~~')
@@ -31,8 +40,8 @@ class HomeTest:
                 print('首页列表元素没有发现----列表为空')
 
             ##  随机进入一个房间
-            # into_room.RoomAction().intoRoom(cmd_name, room_name)      ##  随机进入
-            into_room.RoomAction().into_room_only(cmd_name, room_name)          #指定进入某一房间
+            into_room.RoomAction().intoRoom(cmd_name, room_name)      ##  随机进入
+            # into_room.RoomAction().into_room_only(cmd_name, room_name)          #指定进入某一房间
             time.sleep(1)
             ##  是否存在“知道了”弹框
             is_ok = comm.QimiaoCommnotAction().into_room_exic(cmd_name)
