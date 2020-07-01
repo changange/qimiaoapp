@@ -19,7 +19,8 @@ class MainTest:
         ##  进入房间   随机或者指定
         while True:
             chat_test.ChatTest(cmd_name).test_chat_main()
-            # home_test.HomeTest().test_rooms_main(cmd_name, '嘿嘿嘿')            ##  进入指定的房间再这里写房间名称
+
+            home_test.HomeTest().test_rooms_main(cmd_name, '嘿嘿嘿')            ##  进入指定的房间再这里写房间名称
 
     def qimiao_threading_excution(self):
         phone_number = start.TestStart().connectMoblie()

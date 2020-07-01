@@ -14,14 +14,23 @@ class ChatTest:
         ##  进入聊天--消息页面
         self.chat.into_chat_list()
         ##  随机选择一个聊天窗口
-        self.chat.into_chat_detail()
-        ##  发送内容
-        text_time =datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        print(text_time)
-        self.chat.send_text(text_time)
+        isOk = self.chat.into_chat_detail()
 
-        ##  返回到首页  （返回键）
-        self.d.press('back')
+        if isOk == True:
+            ##  发送内容
+            text_time =datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+            print(text_time)
+            self.chat.send_text(text_time)
+
+            ##  发送奇妙秀
+            self.chat.QMX_record_send()
+
+            ##  返回到首页  （返回键）    按两次返回键才可以返回到首页
+            self.d.press('back')
+            self.d.press('back')
+
+        else:
+            print('消息列表没有消息，或者是只有一个开播提醒，退出发消息，进行下一步')
 
     ##  群聊操作
     def test_group_chat(self):
@@ -34,7 +43,12 @@ class ChatTest:
         print(text_time)
         self.chat.send_text(text_time)
 
+        ##  发送奇妙秀
+        self.chat.QMX_record_send()
+
         ##  返回到首页  （返回键）
+        self.d.press('back')
+        time.sleep(0.5)
         self.d.press('back')
         time.sleep(0.5)
         self.d.press('back')
