@@ -34,7 +34,7 @@ class TestStart:
         time.sleep(3)
 
         for i in range(5):
-            if s(resourceId='com.qmnl.qmpd:id/home_fragment_surprise_box_image'):
+            if s(resourceId='com.qmnl.qmpd:id/home_fragment_task_image'):
                 print ('APP 启动成功')
                 return True
             else:
@@ -46,6 +46,7 @@ class TestStart:
     def jumpFrame(self, cmd_name):
         s = self.sessionConn(cmd_name)
         for i in range(3):
+
             if s(resourceId='com.qmnl.qmpd:id/sign_close_iv'):
                 print('有弹框')
                 s(resourceId='com.qmnl.qmpd:id/sign_close_iv').click()
@@ -86,7 +87,7 @@ class TestStart:
     ##  监听日志
     def save_app_log(self, cmd_name, log_file):
         cmd_save_log = f'adb -s {cmd_name} logcat -v threadtime -f /data/local/tmp/{log_file}/log_{cmd_name} -n 5 -r 200 -s Unity *:I'
-        print(cmd_save_log)
+        print(f'--------{cmd_save_log}')
         cc = os.popen(cmd_save_log)
         # for i in len(cc.readlines()):
         #     print(i)

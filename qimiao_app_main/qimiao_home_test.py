@@ -15,11 +15,12 @@ class HomeTest:
         width = display['width']
         height = display['height']
 
-        if s(resourceId='com.qmnl.qmpd:id/home_fragment_btn_create_room').wait(5):
+        s(resourceId='com.qmnl.qmpd:id/home_party_iv').click()
+
+        if s(resourceId='com.qmnl.qmpd:id/game_iv').wait(5):
             print('首页--派对页面打开成功')
-        elif s(text='派对').wait(5):
-            s(text='派对').click()
-            print('首页----派对页面打开成功')
+        elif s(resourceId='com.qmnl.qmpd:id/chat_room_title').wait(5):
+            print('首页--派对页面打开成功')
         else:
             print('首页--派对打开失败~~~~~~~~~~~~~~~~')
             return False
@@ -36,7 +37,7 @@ class HomeTest:
             print('开始上拉列表~~')
             comm.QimiaoCommnotAction().side(0.49, 0.49, 0.482, 0.224, cmd_name)
             print('上拉列表页完成~~~')
-            if not ac_comm.ActionComm().detection_element_exist('com.qmnl.qmpd:id/chat_room_owner_head', cmd_name):
+            if not ac_comm.ActionComm().detection_element_exist('com.qmnl.qmpd:id/chat_room_title', cmd_name):
                 print('首页列表元素没有发现----列表为空')
 
             ##  随机进入一个房间

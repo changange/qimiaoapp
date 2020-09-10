@@ -27,12 +27,14 @@ class ChatTest:
 
             ##  返回到首页  （返回键）    按两次返回键才可以返回到首页
             self.d.press('back')
-            self.d.press('back')
+            if not self.d(resourceId='com.qmnl.qmpd:id/home_party_iv'):
+                self.d.press('back')
+            print('已返回到首级页面')
 
         else:
             print('消息列表没有消息，或者是只有一个开播提醒，退出发消息，进行下一步')
 
-    ##  群聊操作
+    ##  推介小组
     def test_group_chat(self):
         ##  进入聊天--消息页面
         self.chat.into_chat_list()
@@ -49,16 +51,16 @@ class ChatTest:
         ##  返回到首页  （返回键）
         self.d.press('back')
         time.sleep(0.5)
-        self.d.press('back')
-        time.sleep(0.5)
-        self.d.press('back')
+        if not self.d(resourceId='com.qmnl.qmpd:id/home_party_iv'):
+            self.d.press('back')
+            self.d.press('back')
 
     def test_chat_main(self):
-        ##  私信页面
+        ##  消息聊天页面
         print('------------私信-----------')
         self.test_private_letter()
         print('------------群聊------------')
-        ##  群聊页面
+        ##  推介小组
         self.test_group_chat()
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 import qimiao_app_main.qimiao_home_test as home_test
 import qimiao_app_comm.app_start as start
 import qimiao_app_main.qimiao_chat_test as chat_test
+import qimiao_app_main.qimiao_unity as unity
 import  concurrent.futures
 import time
 
@@ -18,9 +19,10 @@ class MainTest:
         start.TestStart().jumpFrame(cmd_name)
         ##  进入房间   随机或者指定
         while True:
-            chat_test.ChatTest(cmd_name).test_chat_main()
+            # chat_test.ChatTest(cmd_name).test_chat_main()
 
-            home_test.HomeTest().test_rooms_main(cmd_name, '嘿嘿嘿')            ##  进入指定的房间再这里写房间名称
+            # home_test.HomeTest().test_rooms_main(cmd_name, '卡卡')            ##  进入指定的房间再这里写房间名称
+            unity.UnityPage(cmd_name).unity_main('')                            ##  传参：指定房间名称
 
     def qimiao_threading_excution(self):
         phone_number = start.TestStart().connectMoblie()
