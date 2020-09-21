@@ -1,11 +1,16 @@
 import qimiao_app_comm.app_finally as end
 import qimiao_app_comm.app_start as start
+import time
 
 class QimiaoCommnotAction:
 
     ##  离开房间
     def leave_room(self, cmd_name):
+        #   调用两次   防止退出之前进入了私聊页面
         end.TestEnd(cmd_name).back_up_level()
+        time.sleep(0.5)
+        end.TestEnd(cmd_name).back_up_level()
+
         d = start.TestStart().connCMD(cmd_name)
         s = start.TestStart().sessionConn(cmd_name)
         display = d.device_info['display']

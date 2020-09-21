@@ -143,7 +143,7 @@ class UnityPage:
             ##  进入前先刷新下     传参（百分比）
             print('开始刷新首页~~')
             comm.QimiaoCommnotAction().side(0.712, 0.171, 0.756, 0.829, self.cmd_name)
-            # time.sleep(0.5)
+            time.sleep(0.5)
             comm.QimiaoCommnotAction().side(0.712, 0.171, 0.756, 0.829, self.cmd_name)
             print('刷新首页完成~~')
 

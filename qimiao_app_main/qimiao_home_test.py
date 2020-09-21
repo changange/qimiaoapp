@@ -50,7 +50,7 @@ class HomeTest:
                 continue
             else:
                 break
-        time.sleep(20)
+        time.sleep(10)
 
         ##  语聊房内
         other_room.OtherRoom(cmd_name).click_up_wheat()
