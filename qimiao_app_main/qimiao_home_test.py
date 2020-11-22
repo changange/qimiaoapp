@@ -15,7 +15,10 @@ class HomeTest:
         width = display['width']
         height = display['height']
 
-        s(resourceId='com.qmnl.qmpd:id/home_party_iv').click()
+        if s(resourceId='com.qmnl.qmpd:id/home_party_iv').wait(1):
+            s(resourceId='com.qmnl.qmpd:id/home_party_iv').click()
+        else:
+            print("退出到首页失败了~~~~~~~~~~")
 
         if s(resourceId='com.qmnl.qmpd:id/game_iv').wait(5):
             print('首页--派对页面打开成功')

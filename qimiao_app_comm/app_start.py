@@ -34,7 +34,7 @@ class TestStart:
         time.sleep(3)
 
         for i in range(5):
-            if s(resourceId='com.qmnl.qmpd:id/home_fragment_task_image'):
+            if s(resourceId='com.qmnl.qmpd:id/game_iv'):
                 print ('APP 启动成功')
                 return True
             else:
@@ -96,6 +96,7 @@ class TestStart:
 
 if __name__ == '__main__':
     t = TestStart()
+    t.openQimiao()
     t.delete_mobile_log('LFLBB19418208291', 'qimiao_log')
     # t.clear_cache_log('UKPFSCEQ99999999')
     # t.save_app_log('UKPFSCEQ99999999', 'qimiao_log')
