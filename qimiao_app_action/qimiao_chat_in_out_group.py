@@ -124,14 +124,22 @@ class ChatGroup:
 
                 try:
                     join_list = self.d(resourceId='com.qmnl.qmpd:id/chat_group_join_tv').count
+
+                    ##  第四个加入或者去聊天是没办法点击到的，所以要减1
+                    if join_list >= 4:
+                        join_list = 3
+
                     print(f'XXXXXXXXXXXX共：{join_list} 个加入和去聊天')
                 except Exception:
                     print('推荐小组 里没有可加入或者 去聊天的列表 ')
 
                 if join_list > 0:
                     print('推荐的小组 存在可加入或者 去聊天的消息')
-                    join_num = random.randint(0,join_list-1)        ##  必须要减1
-                    print(f'小组--推介的小组--加入第：{join_num}个群聊--{self.d(text="加入",instance=join_num).get_text()}')
+                    try:
+                        join_num = random.randint(0,join_list-1)        ##  必须要减1
+                        print(f'小组--推介的小组--加入第：{join_num}个群聊--{self.d(text="加入",instance=join_num).get_text()}')
+                    except Exception as e:
+                        print(e)
                     self.d(resourceId='com.qmnl.qmpd:id/chat_group_join_tv', instance=join_num).click()        ###################这是个坑，大几吧坑，日了狗了，花了一天时间就在join_num减了1
                     if self.d(resourceId='com.qmnl.qmpd:id/chat_group_title').wait(3):
                         print('进入 推荐小组的聊天页面 成功')
@@ -171,6 +179,7 @@ class ChatGroup:
             self.d(resourceId='com.qmnl.qmpd:id/recordBtn').click()
             num = random.randint(5,15)
             time.sleep(15)
+            print("开始惦记奇妙秀录制按钮~~~")
             self.s.long_click(width*0.5, height*0.888, num)
 
         time.sleep(7)
