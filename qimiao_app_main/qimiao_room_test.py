@@ -12,7 +12,7 @@ class OtherRoom:
     ##  点击上麦或者参加(坐标)
 
     def click_up_wheat(self):
-        ##  上下麦
+        ##   上下麦
         self.d.click(self.width*0.086, self.height*0.954)
         print('第 一 次点击上下麦按钮')
         # self.d.disable_popups(False)
