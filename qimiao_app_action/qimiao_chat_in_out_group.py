@@ -197,3 +197,4 @@ if __name__ == '__main__':
     c = ChatGroup('UKPFSCEQ99999999')
     # c.send_text('20200630191019')
     c.QMX_record_send()
+

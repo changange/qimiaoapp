@@ -9,6 +9,7 @@ class OtherRoom:
         self.width = self.display['width']
         self.height = self.display['height']
 
+
     ##  点击上麦或者参加(坐标)
 
     def click_up_wheat(self):

@@ -3,7 +3,6 @@ import qimiao_app_comm.app_start as start
 import time
 
 class QimiaoCommnotAction:
-
     ##  离开房间
     def leave_room(self, cmd_name):
         #   调用两次   防止退出之前进入了私聊页面

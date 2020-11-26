@@ -79,3 +79,4 @@ class HomeTest:
     def test_rooms_main(self,cmd_name, room_name):
         print('---------------进入首页房间---------------')
         self.test_into_rooms(cmd_name, room_name)
+
