@@ -12,20 +12,15 @@ class OtherRoom:
     ##  点击上麦或者参加(坐标)
 
     def click_up_wheat(self):
-        # time.sleep(5)
-        ##  怕有推介房间
-        # self.d.click(self.width*0.875, self.height*0.268)
         ##  上下麦
         self.d.click(self.width*0.086, self.height*0.954)
-        print('上麦、下麦、参加点击完成')
+        print('第 一 次点击上下麦按钮')
         # self.d.disable_popups(False)
 
         ##  再点一次
         time.sleep(3)
-        ##  怕有推介房间
-        # self.d.click(self.width*0.875, self.height*0.268)
         self.d.click(self.width*0.086, self.height*0.954)
-        print('第二次点击---上麦、下麦、参加点击完成')
+        print('第 二 次点击上下麦')
 
         #   发送文字
         self.d.click(self.width*0.21, self.height*0.95)
@@ -33,10 +28,10 @@ class OtherRoom:
         print("输入键盘已弹出")
         #   输入文字
         self.d.click(self.width * 0.072, self.height * 0.672)
-        time.sleep(0.5)
+        time.sleep(2)
         #   发送按钮
         self.d.click(self.width * 0.913, self.height * 0.524)
-        time.sleep(0.5)
+        time.sleep(2)
         self.d.click(self.width * 0.47, self.height * 0.3)
         print('文字已发送完成')
 
@@ -124,7 +119,7 @@ class OtherRoom:
         self.click_up_wheat()
 
 if __name__ == '__main__':
-    o = OtherRoom('UKPFSCEQ99999999')
+    o = OtherRoom('792QBEQN222NB')
     o.test_other_room()
 
 

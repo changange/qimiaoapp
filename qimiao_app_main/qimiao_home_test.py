@@ -58,6 +58,7 @@ class HomeTest:
         ##  语聊房内
         other_room.OtherRoom(cmd_name).click_up_wheat()
 
+
         ##  推介房间
         s.click(width*0.875, height*0.268)
         ##  房主解散房间
