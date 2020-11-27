@@ -20,7 +20,7 @@ class MainTest:
         ##  进入房间   随机或者指定
         while True:
 
-            chat_test.ChatTest(cmd_name).test_chat_main()
+            # chat_test.ChatTest(cmd_name).test_chat_main()
 
             home_test.HomeTest().test_rooms_main(cmd_name, '卡卡')            ##  进入指定的房间再这里写房间名称
             # unity.UnityPage(cmd_name).unity_main('')                            ##  传参：指定房间名称

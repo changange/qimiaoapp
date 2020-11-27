@@ -27,13 +27,16 @@ class TestStart:
 
 
     def openQimiao(self,cmd_name):
+        print('开始启动 APP')
         d = self.connCMD(cmd_name)
 
         d.app_start('com.qmnl.qmpd', activity='com.qmnl.pati.ui.SplashActivity')
-        s = self.sessionConn(cmd_name)
+        # s = self.sessionConn(cmd_name)
+        s = d.session(package_name='com.qmnl.qmpd', attach=True)
         time.sleep(3)
 
         for i in range(5):
+            print(f'第：{i} 次 循环检测是否成功启动')
             if s(resourceId='com.qmnl.qmpd:id/game_iv'):
                 print ('APP 启动成功')
                 return True
@@ -96,8 +99,8 @@ class TestStart:
 
 if __name__ == '__main__':
     t = TestStart()
-    t.openQimiao()
-    t.delete_mobile_log('LFLBB19418208291', 'qimiao_log')
+    t.openQimiao("792QBEQN222NB")
+    # t.delete_mobile_log('LFLBB19418208291', 'qimiao_log')
     # t.clear_cache_log('UKPFSCEQ99999999')
     # t.save_app_log('UKPFSCEQ99999999', 'qimiao_log')
 

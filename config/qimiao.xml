@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Monkey>
+    <Doaction>
+        <!--兩个值相加等于1-->
+        <click>0.6</click>              <!--跳跃占比-->
+        <sliding>0.4</sliding>          <!--跑动占比-->
+    </Doaction>
+
+    <!--由于轮盘的位置下方，导致随机生成的滑动坐标点大多数是在上方，人物可能会一直在边缘无法走动
+        所以机会要相等，轮盘起始位置为分界线，上下各有机会生成一次
+    -->
+    <ScreenLocation>
+        <lun_up>
+            0.5         <!--0.5就是上下各生成一次-->
+        </lun_up>
+    </ScreenLocation>
+</Monkey>
