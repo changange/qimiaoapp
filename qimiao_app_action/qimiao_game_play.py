@@ -1,7 +1,7 @@
 import uiautomator2 as u2
 import xml.etree.ElementTree as ET
 import os
-import random
+import random, time
 
 class PlayGame:
     def __init__(self,d):
@@ -37,7 +37,8 @@ class PlayGame:
 
         return res
 
-    def sliding_jump(self):
+    ##  随机跑、跳
+    def sliding_jump_randge(self):
         resTD = float(self.resT[0]) * 100
         randNum = random.randint(0,100)
 
@@ -67,11 +68,41 @@ class PlayGame:
             except Exception as e:
                 print('滑动的时候出错了~~~')
 
+    ##  固定几次滑动、跑
+    def sliding_jump_guding(self, sliding=1, jump=1, randNum_i=0.5):
+        ##  跳跃
+        for i in range(jump):
+            print('点击跳跃~~~')
+            self.d.click(self.jump_width, self.jump_hight)
+            time.sleep(1)
+
+        ##  滑动
+        for i in range(sliding):
+            resJump = float(self.resT[2]) * 100
+            randNumJump = random.randint(0, 100)
+
+            ##  滑动功能的步长值
+            # randNum_i = round(random.uniform(0.5, 2), 2)
+
+            if randNumJump > resJump:
+                randNum_width = random.randint(1, self.width)
+                randNum_hight = random.randint(1, self.pao_high)
+            else:
+                randNum_width = random.randint(1, self.width)
+                randNum_hight = random.randint(self.pao_high, self.hight)
+
+            print('滑动跑~~~')
+            try:
+                self.d.swipe(self.pao_width, self.pao_high, randNum_width, randNum_hight, randNum_i)
+                time.sleep(0.5)
+            except Exception as e:
+                print('滑动的时候出错了~~~')
+
 
 if __name__ == '__main__':
     d = u2.connect('a302ac9c')
     d.app_start(package_name='com.qmnl.qmpd', activity='com.qmnl.pati.ui.SplashActivity')
     s = d.session(package_name='com.qmnl.qmpd', attach=True)
     pg = PlayGame(s)
-    while True:
-        pg.sliding_jump()
+    # while True:
+    pg.sliding_jump_guding(2,2)
