@@ -10,43 +10,45 @@ class OtherRoom:
         self.height = self.display['height']
 
 
-    ##  点击上麦或者参加(坐标)
-
+    ##  语聊房、营地功能点击
     def click_up_wheat(self):
         ##   上下麦
         self.d.click(self.width*0.086, self.height*0.954)
         print('第 一 次点击上下麦按钮')
         # self.d.disable_popups(False)
-
         ##  再点一次
         time.sleep(3)
         self.d.click(self.width*0.086, self.height*0.954)
         print('第 二 次点击上下麦')
 
         #   发送文字
-        self.d.click(self.width*0.21, self.height*0.95)
+        self.d.click(self.width*0.4, self.height*0.95)
         time.sleep(0.5)
         print("输入键盘已弹出")
         #   输入文字
-        self.d.click(self.width * 0.072, self.height * 0.672)
-        time.sleep(2)
+        self.d.click(self.width * 0.072, self.height * 0.7)
+        time.sleep(0.2)
+        self.d.click(self.width * 0.072, self.height * 0.635)
+        time.sleep(0.2)
         #   发送按钮
-        self.d.click(self.width * 0.913, self.height * 0.524)
-        time.sleep(2)
-        self.d.click(self.width * 0.47, self.height * 0.3)
+        self.d.click(self.width * 0.913, self.height * 0.560)
+        time.sleep(1)
+        self.d.click(self.width * 0.6, self.height * 0.43)
         print('文字已发送完成')
 
 
         #   发送表情
         print('开始发送表情-----')
-        self.d.click(self.width * 0.534, self.height * 0.954)
+        self.d.click(self.width * 0.660, self.height * 0.954)
         time.sleep(1)
-        self.d.click(self.width * 0.127, self.height * 0.375)
+        self.d.click(self.width * 0.38, self.height * 0.43)
         time.sleep(1)
         print('表情发送完成')
 
 
-        #   道具动作
+        ## =================================暂时先不做====================================
+        '''
+        #   道具、动作
         print('开始道具、表情--')
         self.d.click(self.width * 0.661, self.height * 0.954)
         time.sleep(0.5)
@@ -71,50 +73,29 @@ class OtherRoom:
         self.d.click(self.width * 0.5, self.height * 0.256)
         time.sleep(0.5)
         print('开始道具、表情已完成')
+        '''
+        ## =====================================================================
 
 
 
         #   发红包、礼物
-            #   打开控制台
         print('开始发起红包、送礼物操作-------')
-        self.d.click(self.width * 0.787, self.height * 0.954)
+        # 礼物发送
+        self.d.click(self.width * 0.923, self.height * 0.954)
+        time.sleep(0.5)
+        self.d.click(self.width * 0.15, self.height * 0.68)
+        time.sleep(0.5)
+        self.d.click(self.width * 0.85, self.height * 0.95)
         time.sleep(1)
-            #礼物发送
-        self.d.click(self.width * 0.849, self.height * 0.944)
-        time.sleep(2)
-
-            #红包
-        self.d.click(self.width * 0.787, self.height * 0.954)
+        #红包
+        self.d.click(self.width * 0.923, self.height * 0.954)
         time.sleep(0.5)
         self.d.click(self.width * 0.27, self.height * 0.39)
-        time.sleep(1)
-        self.d.click(self.width * 0.849, self.height * 0.944)
         time.sleep(0.5)
+        self.d.click(self.width * 0.2, self.height * 0.6)
+        time.sleep(0.5)
+        self.d.click(self.width * 0.85, self.height * 0.95)
         print('礼物、红包发送完了')
-
-            #最后
-        self.d.click(self.width * 0.614, self.height *  0.908)
-        time.sleep(0.1)
-        self.d.click(self.width * 0.9, self.height * 0.465)
-        time.sleep(0.1)
-        self.d.click(self.width * 0.919, self.height * 0.797)
-        print('发红包的流程，最后的操作已经执行完了')
-        time.sleep(1)
-
-        #   营地，也执行红包的那一套东西
-        print('开始执行营地物品的一套操作')
-        self.d.click(self.width * 0.92, self.height * 0.96)
-        time.sleep(0.1)
-        time.sleep(5)
-        print('111111111111111')
-            #发送
-        self.d.click(self.width * 0.849, self.height * 0.944)
-        time.sleep(0.2)
-        time.sleep(5)
-        print('222222222222222222222')
-        self.d.click(self.width * 0.942, self.height * 0.789)
-
-
 
     def test_other_room(self):
         self.click_up_wheat()

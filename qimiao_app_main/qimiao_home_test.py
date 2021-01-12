@@ -7,38 +7,28 @@ import time
 
 class HomeTest:
 
+    def __init__(self):
+        self.qimiaoCommAction = comm.QimiaoCommnotAction()
+
     def test_into_rooms(self,cmd_name, room_name):
         s = start.TestStart().sessionConn(cmd_name)
-        d = start.TestStart().connCMD(cmd_name)
+        # d = start.TestStart().connCMD(cmd_name)
 
-        display = d.device_info["display"]
+        display = s.device_info["display"]
         width = display['width']
         height = display['height']
-
-        if s(resourceId='com.qmnl.qmpd:id/home_party_iv').wait(1):
-            s(resourceId='com.qmnl.qmpd:id/home_party_iv').click()
-        else:
-            print("退出到首页失败了~~~~~~~~~~")
-
-        if s(resourceId='com.qmnl.qmpd:id/game_iv').wait(5):
-            print('首页--派对页面打开成功')
-        elif s(resourceId='com.qmnl.qmpd:id/chat_room_title').wait(5):
-            print('首页--派对页面打开成功')
-        else:
-            print('首页--派对打开失败~~~~~~~~~~~~~~~~')
-            return False
 
         for i in range(10):
             ##  进入前先刷新下     传参（百分比）
             print('开始刷新首页~~')
-            comm.QimiaoCommnotAction().side(0.712, 0.171, 0.756, 0.829, cmd_name)
-            # time.sleep(0.5)
-            comm.QimiaoCommnotAction().side(0.712, 0.171, 0.756, 0.829, cmd_name)
+            self.qimiaoCommAction.side(0.712, 0.171, 0.756, 0.829, cmd_name)
+            time.sleep(1)
+            self.qimiaoCommAction.side(0.712, 0.171, 0.756, 0.829, cmd_name)
             print('刷新首页完成~~')
 
             ##  上拉模拟用户滑动
             print('开始上拉列表~~')
-            comm.QimiaoCommnotAction().side(0.49, 0.49, 0.482, 0.224, cmd_name)
+            self.qimiaoCommAction.side(0.49, 0.49, 0.482, 0.224, cmd_name)
             print('上拉列表页完成~~~')
             if not ac_comm.ActionComm().detection_element_exist('com.qmnl.qmpd:id/chat_room_title', cmd_name):
                 print('首页列表元素没有发现----列表为空')
@@ -58,21 +48,19 @@ class HomeTest:
         ##  语聊房内
         other_room.OtherRoom(cmd_name).click_up_wheat()
 
-
-        ##  推介房间
-        s.click(width*0.875, height*0.268)
         ##  房主解散房间
         time.sleep(0.5)
         s.click(width*0.488, height*0.614)
 
-        time.sleep(10)
-        if d(resourceId='com.qmnl.qmpd:id/chat_room_title'):
-            print('房主已解散房间~~~')
-        else:
-            ##  离开房间
-            print('准备离开房间')
-            comm.QimiaoCommnotAction().leave_room(cmd_name)
-            time.sleep(10)
+        ##  离开房间
+        self.qimiaoCommAction.leave_room(cmd_name)
+        for i in range(10):
+            if s(resourceId='com.qmnl.qmpd:id/game_iv'):
+                print("退出营地，成功进入派对首页")
+                break
+            else:
+                time.sleep(2)
+                print(f"第：{i}次 退出营地失败~~~~~~~")
 
 
 

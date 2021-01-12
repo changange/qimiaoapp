@@ -72,9 +72,10 @@ class PlayGame:
     def sliding_jump_guding(self, sliding=1, jump=1, randNum_i=0.5):
         ##  跳跃
         for i in range(jump):
+            time.sleep(1)
             print('点击跳跃~~~')
             self.d.click(self.jump_width, self.jump_hight)
-            time.sleep(1)
+
 
         ##  滑动
         for i in range(sliding):
@@ -105,4 +106,4 @@ if __name__ == '__main__':
     s = d.session(package_name='com.qmnl.qmpd', attach=True)
     pg = PlayGame(s)
     # while True:
-    pg.sliding_jump_guding(2,2)
+    pg.sliding_jump_guding(20,20,1)

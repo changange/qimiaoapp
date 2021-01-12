@@ -41,7 +41,7 @@ class TestStart:
                 print ('APP 启动成功')
                 return True
             else:
-                time.sleep(3)
+                time.sleep(2)
         print ('APP 启动失败')
         return False
 
@@ -49,11 +49,12 @@ class TestStart:
     def jumpFrame(self, cmd_name):
         s = self.sessionConn(cmd_name)
         for i in range(3):
-
             if s(resourceId='com.qmnl.qmpd:id/sign_close_iv'):
                 print('有弹框')
                 s(resourceId='com.qmnl.qmpd:id/sign_close_iv').click()
                 return False
+            else:
+                pass
         print('没有领金币弹框')
 
     ##  清空日志缓存

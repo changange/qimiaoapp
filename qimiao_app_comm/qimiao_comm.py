@@ -11,11 +11,10 @@ class QimiaoCommnotAction:
         end.TestEnd(cmd_name).back_up_level()
 
         d = start.TestStart().connCMD(cmd_name)
-        s = start.TestStart().sessionConn(cmd_name)
         display = d.device_info['display']
         width = display['width']
         hight = display['height']
-        s.click(width*0.686, hight*0.61)
+        d.click(width*0.686, hight*0.61)
 
     ##  进入房间先判断房间在不在，不在的话刷新
     def into_room_exic(self, cmd_name):
@@ -32,9 +31,9 @@ class QimiaoCommnotAction:
 
     ##  滑动的起始位置和终止位置（百分比）
     def side(self, start_width, start_hight, end_width, end_hight, cmd_name):
-        d = start.TestStart().connCMD(cmd_name)
+        # d = start.TestStart().connCMD(cmd_name)
         s = start.TestStart().sessionConn(cmd_name)
-        display = d.device_info['display']
+        display = s.device_info['display']
         width = display['width']
         hight = display['height']
         s.swipe(width*start_width, hight*start_hight, width*end_width, hight*end_hight)
